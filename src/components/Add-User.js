@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Details extends Component {
+export default class AddUser extends Component {
 
     initialState = {
         name: '',

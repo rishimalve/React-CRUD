@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class ShowDetails extends Component {
+export default class DisplayUsers extends Component {
 
     render() {
         const data = this.props.data
