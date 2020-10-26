@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Details from './components/Enter-Details';
-import ShowDetails from './components/User-Details'
+import AddUser from './components/Add-User';
+import DisplayUsers from './components/Display-Users'
 
 class App extends Component {
 
@@ -37,11 +37,11 @@ class App extends Component {
         <div className="flex-row">
           <div className="flex-large">
             <h2>Add User</h2>
-            <Details handleSubmit={this.handleSubmit} />
+            <AddUser handleSubmit={this.handleSubmit} />
           </div>
           <div className="flex-large">
             <h2>Users List</h2>
-            <ShowDetails data={data} removeUser={this.removeUser} />
+            <DisplayUsers data={data} removeUser={this.removeUser} />
           </div>
         </div>
 
