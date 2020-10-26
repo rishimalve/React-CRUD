@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   handleSubmit = (row) => {
-    this.setState({data: [...this.state.data, row]})
+    this.setState({ data: [...this.state.data, row] })
   }
 
   render() {
@@ -30,11 +30,22 @@ class App extends Component {
 
     return (
       <div className="container">
+        <h1>React CRUD App</h1>
         <header className="App-header">
         </header>
         <br />
-        <Details handleSubmit={this.handleSubmit}/>
-        <ShowDetails data={data} removeUser = {this.removeUser} />
+        <div className="flex-row">
+          <div className="flex-large">
+            <h2>Add User</h2>
+            <Details handleSubmit={this.handleSubmit} />
+          </div>
+          <div className="flex-large">
+            <h2>Users List</h2>
+            <ShowDetails data={data} removeUser={this.removeUser} />
+          </div>
+        </div>
+
+
       </div>
     );
   }

@@ -4,7 +4,7 @@ export default class Details extends Component {
 
     initialState = {
         name: '',
-        details: '',
+        userName: '',
     }
 
     state = this.initialState
@@ -25,19 +25,19 @@ export default class Details extends Component {
     }
 
     render() {
-        const { name, details } = this.state
+        const { name, userName } = this.state
         return (
             <div>
                 <form onSubmit={this.submitForm}>
+                    <label>Name</label>
                     <input
                         type="text"
-                        placeholder="Enter Name"
                         name="name" id="name" value={name}
-                        onChange={this.handleChange} /><br />
+                        onChange={this.handleChange} />
+                    <label>UserName</label>
                     <input
                         type="text"
-                        placeholder="Enter Details"
-                        name="details" id="details" value={details}
+                        name="userName" id="userName" value={userName}
                         onChange={this.handleChange} /><br />
                     <button type="submit">Submit</button>
                 </form>

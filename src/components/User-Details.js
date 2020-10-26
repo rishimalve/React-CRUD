@@ -10,8 +10,8 @@ export default class ShowDetails extends Component {
                 <table>
                     <thead>
                         <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Name</th>
+                            <th>UserName</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -20,9 +20,9 @@ export default class ShowDetails extends Component {
                             return (
                                 <tr key={index}>
                                     <td>{row.name}</td>
-                                    <td>{row.details}</td>
+                                    <td>{row.userName}</td>
                                     <td>
-                                        <button onClick={() => removeUser(index)}>
+                                        <button onClick={() => removeUser(index)} className="button muted-button">
                                             Delete
                                         </button>
                                     </td>
