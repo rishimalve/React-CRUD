@@ -1,4 +1,4 @@
-# React CRUD App
+# React CRUD App with Hooks
 
 In this project, I've created a Simple React CRUD app to add, update or delete users.
 
