@@ -1,54 +1,68 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import AddUser from './components/Add-User';
 import DisplayUsers from './components/Display-Users'
+import EditUser from './components/Edit-User'
 
-class App extends Component {
+const App = () => {
 
-  state = {
-    data: [
+  const data = []
+  const [users, setUsers] = useState(data)
+  const [editing, setEditing] = useState(false)
 
-    ],
+  const addUser = (user) => {
+    user.id = users.length + 1
+    setUsers([...users, user])
   }
 
-  removeUser = (index) => {
-    const { data } = this.state
+  const initialFormState = { id: null, name: '', userName: '' }
+  const [currentUser, setCurrentUser] = useState(initialFormState)
 
-    this.setState({
-      data: data.filter((d, i) => {
-        return i !== index
-      }),
-    })
+  const deleteUser = (id) => {
+    setEditing(false)
+    setUsers(users.filter((user) => user.id !== id))
   }
 
-  handleSubmit = (row) => {
-    this.setState({ data: [...this.state.data, row] })
+  const editUser = (user) => {
+    setEditing(true)
+    setCurrentUser({ id: user.id, name: user.name, userName: user.userName })
   }
 
-  render() {
+  const updateUser = (id, updatedUser) => {
+    setEditing(false)
+    setUsers(users.map((user) => (user.id === id ? updatedUser : user)))
+  }
 
-    const data = this.state.data
-
-    return (
-      <div className="container">
-        <h1>React CRUD App</h1>
-        <header className="App-header">
-        </header>
-        <br />
-        <div className="flex-row">
-          <div className="flex-large">
-            <h2>Add User</h2>
-            <AddUser handleSubmit={this.handleSubmit} />
-          </div>
-          <div className="flex-large">
-            <h2>Users List</h2>
-            <DisplayUsers data={data} removeUser={this.removeUser} />
-          </div>
+  return (
+    <div className="container">
+      <h1>React CRUD App with Hooks</h1>
+      <header className="App-header">
+      </header>
+      <div className="flex-row">
+        <div className="flex-large">
+          {editing ? (
+            <div>
+              <h2>Edit user</h2>
+              <EditUser
+                editing={editing}
+                setEditing={setEditing}
+                currentUser={currentUser}
+                updateUser={updateUser}
+              />
+            </div>
+          ) : (
+              <div>
+                <h2>Add user</h2>
+                <AddUser addUser={addUser} />
+              </div>
+            )}
         </div>
-
-
+        <div className="flex-large">
+          <h2>Users List</h2>
+          <DisplayUsers data={users} deleteUser={deleteUser} editUser={editUser} />
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
